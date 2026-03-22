@@ -381,6 +381,12 @@ const TITLE_TEMPLATES = {
     '独占:{artist}の最新動向',
     '{artist}の現在地 \u2014 ONYXが追う',
     '{artist}に関する注目の最新情報',
+    '{artist}の深層 \u2014 ONYX独自取材',
+    'ONYX FOCUS:{artist}の最新情報',
+    '{artist}を巡る最新事情 \u2014 編集部分析',
+    '{artist}の今を追う \u2014 ONYX REPORT',
+    '{artist}の軌跡と現在 \u2014 独占レポート',
+    '{artist}に迫る \u2014 ONYXエディトリアル',
   ],
 };
 
@@ -393,6 +399,28 @@ const NO_ARTIST_TEMPLATES = [
   '見逃せないK-POP動向 \u2014 ONYX編集部セレクト',
   'ダークサイドからの視点 \u2014 今週のK-POP',
   'K-POPの闇と光 \u2014 ONYX独自分析',
+  '夜明け前のシーン \u2014 K-POPの新たな潮流',
+  'ONYX独占 \u2014 K-POPの最深部から届く報告',
+  '沈黙と轟音の間で \u2014 K-POPシーン最新動向',
+  '黒い潮流 \u2014 ONYXが捉えたK-POPの今',
+  'K-POPの裏側を照らす \u2014 ONYX独自視点',
+  '深夜のニュースデスクから \u2014 ONYX速報',
+  'モノクロームの真実 \u2014 K-POP最新レポート',
+  'K-POPシーンの地殻変動 \u2014 ONYX考察',
+  '漆黒のステージから \u2014 今週の注目トピック',
+  'ONYX REPORT \u2014 K-POPの最前線を追う',
+  '影の中の物語 \u2014 K-POPの深層を読む',
+  'K-POPの断面 \u2014 ONYXが切り取る今週の核心',
+  '静謐な衝撃 \u2014 K-POPシーンに走る波紋',
+  'ONYX WEEKLY \u2014 K-POP界の注目すべき動き',
+  '暗がりの美学 \u2014 K-POPニュース最前線',
+  'K-POPの深淵に潜む真実 \u2014 ONYX独占分析',
+  '夜のエディトリアル \u2014 K-POPシーン総括',
+  'ONYX INSIGHT \u2014 K-POPの知られざる一面',
+  'K-POPの鼓動 \u2014 ONYXが聴き取る最新シグナル',
+  '暗転する舞台から \u2014 K-POP最新情報',
+  'ONYX LENS \u2014 K-POPシーンを映す',
+  'K-POPの影と輪郭 \u2014 ONYX編集部レポート',
 ];
 
 // ---- Display categories for ONYX ----
@@ -957,20 +985,35 @@ function rewriteArticleBody(articleContent, title) {
   const inlineImages = (articleContent?.images || []).slice(1, 4);
 
   const paragraphs = [];
+  const usedTexts = new Set();
+  const pickUnique = (arr) => {
+    const available = arr.filter(t => !usedTexts.has(t));
+    if (available.length === 0) return arr[Math.floor(Math.random() * arr.length)];
+    const picked = available[Math.floor(Math.random() * available.length)];
+    usedTexts.add(picked);
+    return picked;
+  };
+  const shuffleAndPickUnique = (arr, n) => {
+    const available = arr.filter(t => !usedTexts.has(t));
+    const shuffled = [...available].sort(() => Math.random() - 0.5);
+    const picked = shuffled.slice(0, Math.min(n, shuffled.length));
+    for (const p of picked) usedTexts.add(p);
+    return picked;
+  };
 
   if (artist) {
     const templates = BODY_TEMPLATES[topic] || BODY_TEMPLATES.general;
     const sub = (text) => text.replace(/\{artist\}/g, artist);
 
-    paragraphs.push({ type: 'intro', text: sub(pickRandom(templates.opening)) });
+    paragraphs.push({ type: 'intro', text: sub(pickUnique(templates.opening)) });
 
     const bgCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const bg of shuffleAndPick(SHARED_PARAGRAPHS.background, bgCount)) {
+    for (const bg of shuffleAndPickUnique(SHARED_PARAGRAPHS.background, bgCount)) {
       paragraphs.push({ type: 'body', text: sub(bg) });
     }
 
     const analysisCount = targetParagraphs >= 10 ? 2 : 2;
-    for (const a of shuffleAndPick(templates.analysis, analysisCount)) {
+    for (const a of shuffleAndPickUnique(templates.analysis, analysisCount)) {
       paragraphs.push({ type: 'body', text: sub(a) });
     }
 
@@ -979,12 +1022,12 @@ function rewriteArticleBody(articleContent, title) {
     }
 
     const detailCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const d of shuffleAndPick(SHARED_PARAGRAPHS.detail, detailCount)) {
+    for (const d of shuffleAndPickUnique(SHARED_PARAGRAPHS.detail, detailCount)) {
       paragraphs.push({ type: 'body', text: sub(d) });
     }
 
     const reactionCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const r of shuffleAndPick(SHARED_PARAGRAPHS.reaction, reactionCount)) {
+    for (const r of shuffleAndPickUnique(SHARED_PARAGRAPHS.reaction, reactionCount)) {
       paragraphs.push({ type: 'body', text: sub(r) });
     }
 
@@ -992,17 +1035,17 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[1] });
     }
 
-    paragraphs.push({ type: 'body', text: sub(pickRandom(SHARED_PARAGRAPHS.impact)) });
-    paragraphs.push({ type: 'closing', text: sub(pickRandom(templates.closing)) });
+    paragraphs.push({ type: 'body', text: sub(pickUnique(SHARED_PARAGRAPHS.impact)) });
+    paragraphs.push({ type: 'closing', text: sub(pickUnique(templates.closing)) });
 
   } else {
-    paragraphs.push({ type: 'intro', text: pickRandom(NO_ARTIST_BODY.opening) });
+    paragraphs.push({ type: 'intro', text: pickUnique(NO_ARTIST_BODY.opening) });
 
-    for (const bg of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.background, 2)) {
+    for (const bg of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.background, 2)) {
       paragraphs.push({ type: 'body', text: bg });
     }
 
-    for (const a of shuffleAndPick(NO_ARTIST_BODY.analysis, 2)) {
+    for (const a of shuffleAndPickUnique(NO_ARTIST_BODY.analysis, 2)) {
       paragraphs.push({ type: 'body', text: a });
     }
 
@@ -1010,11 +1053,11 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[0] });
     }
 
-    for (const d of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.detail, 2)) {
+    for (const d of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.detail, 2)) {
       paragraphs.push({ type: 'body', text: d });
     }
 
-    for (const r of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.reaction, 1)) {
+    for (const r of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.reaction, 1)) {
       paragraphs.push({ type: 'body', text: r });
     }
 
@@ -1022,8 +1065,8 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[1] });
     }
 
-    paragraphs.push({ type: 'body', text: pickRandom(SHARED_PARAGRAPHS.noArtist.impact) });
-    paragraphs.push({ type: 'closing', text: pickRandom(NO_ARTIST_BODY.closing) });
+    paragraphs.push({ type: 'body', text: pickUnique(SHARED_PARAGRAPHS.noArtist.impact) });
+    paragraphs.push({ type: 'closing', text: pickUnique(NO_ARTIST_BODY.closing) });
   }
 
   return { paragraphs };
@@ -1402,16 +1445,30 @@ async function main() {
   await fillMissingImages(articles);
   log('');
 
-  // 3. Rewrite ALL titles to ONYX editorial Japanese
+  // 3. Rewrite ALL titles to ONYX editorial Japanese (with deduplication)
   log('Rewriting titles to ONYX dark editorial style...');
   let rewritten = 0;
+  const usedTitles = new Set();
   for (const article of articles) {
     const original = article.title;
     article.originalTitle = original;
-    article.title = rewriteTitle(original, article.source);
+    let newTitle = rewriteTitle(original, article.source);
+    // Deduplication: if title already used, try up to 10 times for a unique one
+    let attempts = 0;
+    while (usedTitles.has(newTitle) && attempts < 10) {
+      newTitle = rewriteTitle(original, article.source);
+      attempts++;
+    }
+    // If still duplicate after 10 attempts, append a suffix
+    if (usedTitles.has(newTitle)) {
+      const suffixes = ['（続報）', '（深層分析）', '（ONYX独占）', '（詳報）', '（最新）', '（考察）', '（速報）', '（検証）'];
+      newTitle = newTitle + suffixes[Math.floor(Math.random() * suffixes.length)];
+    }
+    usedTitles.add(newTitle);
+    article.title = newTitle;
     if (article.title !== original) rewritten++;
   }
-  log(`  Rewritten ${rewritten}/${articles.length} titles`);
+  log(`  Rewritten ${rewritten}/${articles.length} titles (${usedTitles.size} unique)`);
   log('');
 
   // 4. Backdate articles to Jan 1 - Mar 22, 2026

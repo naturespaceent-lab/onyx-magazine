@@ -280,9 +280,48 @@
       color: #666;
     }
 
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #c9a96e;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .mobile-nav-hidden {
+      display: none;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+    }
+    .mobile-nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-nav-inner a {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+    }
+    .mobile-nav-inner a:hover { color: #c9a96e; }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
       .site-nav { display: none; }
+      .mobile-menu-btn { display: flex; }
       .hero-title { font-size: 22px; }
       .exclusive-grid { grid-template-columns: 1fr; }
       .latest-item { grid-template-columns: 100px 1fr; gap: 12px; }
@@ -302,19 +341,32 @@
         <a href="#style">STYLE</a>
         <a href="#archive">ARCHIVE</a>
       </nav>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" class="mobile-nav-hidden">
+    <div class="mobile-nav-inner">
+      <a href="#exclusive">EXCLUSIVE</a>
+      <a href="#latest">LATEST</a>
+      <a href="#style">STYLE</a>
+      <a href="#archive">ARCHIVE</a>
+    </div>
+  </div>
 
   <!-- ===== HERO ===== -->
   <a href="articles/article-001.html" style="text-decoration:none;color:inherit;display:block"><section class="hero-section">
     <div class="hero-inner">
       <div class="hero-img">
-        <img src="images/article-0-99323.jpg" alt="来週(3月23日～)日本のテレビで放送開始「本国で二桁視聴率」韓国ドラマ5選" width="1400" height="800" loading="eager" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%9D%A5%E9%80%B1(3%E6%9C%8823%E6%97%A5%EF%BD%9E)%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%86%E3%83%AC%E3%83%93%E3%81%A7%E6%94%BE%E9%80%81%E9%96%8B/1400/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+        <img src="images/article-0-60301.jpg" alt="日本で観られる作品も！26年4月放送・公開予定の最新韓国ドラマ8選" width="1400" height="800" loading="eager" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%97%A5%E6%9C%AC%E3%81%A7%E8%A6%B3%E3%82%89%E3%82%8C%E3%82%8B%E4%BD%9C%E5%93%81%E3%82%82%EF%BC%8126%E5%B9%B44%E6%9C%88%E6%94%BE%E9%80%81%E3%83%BB%E5%85%AC/1400/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
       </div>
       <span class="hero-category">EXCLUSIVE</span>
-      <h1 class="hero-title">来週(3月23日～)日本のテレビで放送開始「本国で二桁視聴率」韓国ドラマ5選</h1>
+      <h1 class="hero-title">日本で観られる作品も！26年4月放送・公開予定の最新韓国ドラマ8選</h1>
       <div class="hero-meta">
-        <span>2026年3月17日</span>
+        <span>2026年3月16日</span>
         <span class="sep">|</span>
         <span>Danmee</span>
       </div>
@@ -328,46 +380,46 @@
       <div class="exclusive-grid">
         <a href="articles/article-002.html" class="exclusive-card">
           <div class="card-image">
-            <img src="images/article-1-99324.jpg" alt="Stray Kidsのプライベート — ONYXの視点から" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/Stray%20Kids%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%99%E3%83%BC%E3%83%88%20%E2%80%94%20/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-1-60302.jpg" alt="Global Pop Roundの現在地 — ONYXが追う" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/Global%20Pop%20Round%E3%81%AE%E7%8F%BE%E5%9C%A8%E5%9C%B0/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-overlay">
-            <span class="card-category">CULTURE</span>
-            <h3 class="card-title">Stray Kidsのプライベート — ONYXの視点から</h3>
-            <span class="card-date">2026年3月21日</span>
+            <span class="card-category">EXCLUSIVE</span>
+            <h3 class="card-title">Global Pop Roundの現在地 — ONYXが追う</h3>
+            <span class="card-date">2026年3月20日</span>
             <span class="card-source">TheBiasList</span>
           </div>
         </a>
         <a href="articles/article-003.html" class="exclusive-card">
           <div class="card-image">
-            <img src="images/article-2-99324.jpg" alt="暗闇の中の輝き — 最新K-POPニュース" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%9A%97%E9%97%87%E3%81%AE%E4%B8%AD%E3%81%AE%E8%BC%9D%E3%81%8D%20%E2%80%94%20%E6%9C%80%E6%96%B0K-POP%E3%83%8B%E3%83%A5%E3%83%BC/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-2-60302.jpg" alt="ONYX FOCUS:Yoo Yeon Seokの最新情報" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/ONYX%20FOCUS%3AYoo%20Yeon%20/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-overlay">
             <span class="card-category">EXCLUSIVE</span>
-            <h3 class="card-title">暗闇の中の輝き — 最新K-POPニュース</h3>
+            <h3 class="card-title">ONYX FOCUS:Yoo Yeon Seokの最新情報</h3>
             <span class="card-date">2026年3月20日</span>
-            <span class="card-source">TheBiasList</span>
+            <span class="card-source">Soompi</span>
           </div>
         </a>
         <a href="articles/article-004.html" class="exclusive-card">
           <div class="card-image">
-            <img src="images/article-3-99325.jpg" alt="Yoo Yeon Seokを巡る報道 — 事実を静かに見つめる" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/Yoo%20Yeon%20Seok%E3%82%92%E5%B7%A1%E3%82%8B%E5%A0%B1%E9%81%93%20%E2%80%94/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-3-60302.jpg" alt="BTSの新たなる覚醒 — カムバック全貌" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/BTS%E3%81%AE%E6%96%B0%E3%81%9F%E3%81%AA%E3%82%8B%E8%A6%9A%E9%86%92%20%E2%80%94%20%E3%82%AB%E3%83%A0%E3%83%90%E3%83%83%E3%82%AF%E5%85%A8%E8%B2%8C/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-overlay">
-            <span class="card-category">CULTURE</span>
-            <h3 class="card-title">Yoo Yeon Seokを巡る報道 — 事実を静かに見つめる</h3>
+            <span class="card-category">NEW MUSIC</span>
+            <h3 class="card-title">BTSの新たなる覚醒 — カムバック全貌</h3>
             <span class="card-date">2026年3月19日</span>
-            <span class="card-source">Soompi</span>
+            <span class="card-source">Koreaboo</span>
           </div>
         </a>
         <a href="articles/article-005.html" class="exclusive-card">
           <div class="card-image">
-            <img src="images/article-4-99325.jpg" alt="「マンスリー彼氏」ジスが1位に！3月第2週 韓国ドラマ出演者 話題性ランキングトップ5" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E3%80%8C%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%AA%E3%83%BC%E5%BD%BC%E6%B0%8F%E3%80%8D%E3%82%B8%E3%82%B9%E3%81%8C1%E4%BD%8D%E3%81%AB%EF%BC%813%E6%9C%88%E7%AC%AC2/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-4-60303.jpg" alt="AB6IXに関する注目の最新情報" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/AB6IX%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%B3%A8%E7%9B%AE%E3%81%AE%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1/600/800" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-overlay">
             <span class="card-category">EXCLUSIVE</span>
-            <h3 class="card-title">「マンスリー彼氏」ジスが1位に！3月第2週 韓国ドラマ出演者 話題性ランキングトップ5</h3>
-            <span class="card-date">2026年3月18日</span>
-            <span class="card-source">Danmee</span>
+            <h3 class="card-title">AB6IXに関する注目の最新情報</h3>
+            <span class="card-date">2026年3月16日</span>
+            <span class="card-source">TheBiasList</span>
           </div>
         </a>
       </div>
@@ -381,57 +433,57 @@
       <div class="latest-list">
         <a href="articles/article-006.html" class="latest-item">
           <div class="item-image">
-            <img src="https://picsum.photos/seed/onyx-1-9321/800/450" alt="Ahn Hyo Seop Isに関する注目の最新情報" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/Ahn%20Hyo%20Seop%20Is%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%B3%A8/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="https://picsum.photos/seed/onyx-1-300/800/450" alt="静謐な衝撃 — K-POPシーンに走る波紋" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E9%9D%99%E8%AC%90%E3%81%AA%E8%A1%9D%E6%92%83%20%E2%80%94%20K-POP%E3%82%B7%E3%83%BC%E3%83%B3%E3%81%AB%E8%B5%B0%E3%82%8B%E6%B3%A2/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="item-content">
-            <span class="item-category">EXCLUSIVE</span>
-            <h3 class="item-title">Ahn Hyo Seop Isに関する注目の最新情報</h3>
-            <span class="item-date">2026年3月19日</span>
+            <span class="item-category">NEW MUSIC</span>
+            <h3 class="item-title">静謐な衝撃 — K-POPシーンに走る波紋</h3>
+            <span class="item-date">2026年3月21日</span>
             <span class="item-source">Soompi</span>
           </div>
         </a>
         <a href="articles/article-007.html" class="latest-item">
           <div class="item-image">
-            <img src="https://picsum.photos/seed/onyx-2-9321/800/450" alt="VIVIZの新章 — 契約と決断の裏側" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/VIVIZ%E3%81%AE%E6%96%B0%E7%AB%A0%20%E2%80%94%20%E5%A5%91%E7%B4%84%E3%81%A8%E6%B1%BA%E6%96%AD%E3%81%AE%E8%A3%8F%E5%81%B4/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="https://picsum.photos/seed/onyx-2-300/800/450" alt="K-POPの影と輪郭 — ONYX編集部レポート（続報）" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/K-POP%E3%81%AE%E5%BD%B1%E3%81%A8%E8%BC%AA%E9%83%AD%20%E2%80%94%20ONYX%E7%B7%A8%E9%9B%86%E9%83%A8/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="item-content">
             <span class="item-category">CULTURE</span>
-            <h3 class="item-title">VIVIZの新章 — 契約と決断の裏側</h3>
-            <span class="item-date">2026年3月19日</span>
+            <h3 class="item-title">K-POPの影と輪郭 — ONYX編集部レポート（続報）</h3>
+            <span class="item-date">2026年3月17日</span>
             <span class="item-source">Soompi</span>
           </div>
         </a>
         <a href="articles/article-008.html" class="latest-item">
           <div class="item-image">
-            <img src="https://picsum.photos/seed/onyx-3-9321/800/450" alt="暗闇の中の輝き — 最新K-POPニュース" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%9A%97%E9%97%87%E3%81%AE%E4%B8%AD%E3%81%AE%E8%BC%9D%E3%81%8D%20%E2%80%94%20%E6%9C%80%E6%96%B0K-POP%E3%83%8B%E3%83%A5%E3%83%BC/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-7-60303.jpg" alt="暗転する舞台から — K-POP最新情報（ONYX独占）" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%9A%97%E8%BB%A2%E3%81%99%E3%82%8B%E8%88%9E%E5%8F%B0%E3%81%8B%E3%82%89%20%E2%80%94%20K-POP%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="item-content">
-            <span class="item-category">CULTURE</span>
-            <h3 class="item-title">暗闇の中の輝き — 最新K-POPニュース</h3>
-            <span class="item-date">2026年3月17日</span>
-            <span class="item-source">Soompi</span>
+            <span class="item-category">EXCLUSIVE</span>
+            <h3 class="item-title">暗転する舞台から — K-POP最新情報（ONYX独占）</h3>
+            <span class="item-date">2026年3月16日</span>
+            <span class="item-source">Seoulbeats</span>
           </div>
         </a>
         <a href="articles/article-009.html" class="latest-item">
           <div class="item-image">
-            <img src="images/article-8-99412.jpg" alt="3連休は名作で！今週末(3/20～) 日本のテレビで観られる「韓国映画史に残る」大ヒット作品4選" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/3%E9%80%A3%E4%BC%91%E3%81%AF%E5%90%8D%E4%BD%9C%E3%81%A7%EF%BC%81%E4%BB%8A%E9%80%B1%E6%9C%AB(3%2F20%EF%BD%9E)%20%E6%97%A5/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="https://picsum.photos/seed/onyx-3-300/800/450" alt="South Koreaのモード哲学 — スタイルの深層" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/South%20Korea%E3%81%AE%E3%83%A2%E3%83%BC%E3%83%89%E5%93%B2%E5%AD%A6%20%E2%80%94%20/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="item-content">
-            <span class="item-category">EXCLUSIVE</span>
-            <h3 class="item-title">3連休は名作で！今週末(3/20～) 日本のテレビで観られる「韓国映画史に残る」大ヒット作品4選</h3>
-            <span class="item-date">2026年3月17日</span>
-            <span class="item-source">Danmee</span>
+            <span class="item-category">STYLE</span>
+            <h3 class="item-title">South Koreaのモード哲学 — スタイルの深層</h3>
+            <span class="item-date">2026年3月16日</span>
+            <span class="item-source">HelloKpop</span>
           </div>
         </a>
         <a href="articles/article-010.html" class="latest-item">
           <div class="item-image">
-            <img src="images/article-9-99412.png" alt="ダークサイドからの視点 — 今週のK-POP" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E3%83%80%E3%83%BC%E3%82%AF%E3%82%B5%E3%82%A4%E3%83%89%E3%81%8B%E3%82%89%E3%81%AE%E8%A6%96%E7%82%B9%20%E2%80%94%20%E4%BB%8A%E9%80%B1%E3%81%AEK-P/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-9-60546.jpg" alt="子育て、キャリア、介護‥来週(3月16日～)日本のテレビで放送「日本人女性も共感」韓国ドラマ4選" width="200" height="125" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E5%AD%90%E8%82%B2%E3%81%A6%E3%80%81%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%80%81%E4%BB%8B%E8%AD%B7%E2%80%A5%E6%9D%A5%E9%80%B1(3%E6%9C%8816%E6%97%A5/200/125" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="item-content">
-            <span class="item-category">CULTURE</span>
-            <h3 class="item-title">ダークサイドからの視点 — 今週のK-POP</h3>
-            <span class="item-date">2026年3月17日</span>
-            <span class="item-source">Soompi</span>
+            <span class="item-category">EXCLUSIVE</span>
+            <h3 class="item-title">子育て、キャリア、介護‥来週(3月16日～)日本のテレビで放送「日本人女性も共感」韓国ドラマ4選</h3>
+            <span class="item-date">2026年3月16日</span>
+            <span class="item-source">Danmee</span>
           </div>
         </a>
       </div>
@@ -445,46 +497,46 @@
       <div class="style-grid">
         <a href="articles/article-011.html" class="style-card">
           <div class="card-image">
-            <img src="images/article-10-99412.jpg" alt="キム・ヘユンがホラーでイメチェン！26年4月本国公開される注目の韓国映画4選" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E3%82%AD%E3%83%A0%E3%83%BB%E3%83%98%E3%83%A6%E3%83%B3%E3%81%8C%E3%83%9B%E3%83%A9%E3%83%BC%E3%81%A7%E3%82%A4%E3%83%A1%E3%83%81%E3%82%A7%E3%83%B3%EF%BC%8126%E5%B9%B4/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-10-60547.jpg" alt="深夜のニュースデスクから — ONYX速報" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%B7%B1%E5%A4%9C%E3%81%AE%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%87%E3%82%B9%E3%82%AF%E3%81%8B%E3%82%89%20%E2%80%94%20ONYX%E9%80%9F/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-body">
-            <span class="card-category">EXCLUSIVE</span>
-            <h3 class="card-title">キム・ヘユンがホラーでイメチェン！26年4月本国公開される注目の韓国映画4選</h3>
+            <span class="card-category">CHART</span>
+            <h3 class="card-title">深夜のニュースデスクから — ONYX速報</h3>
             <span class="card-date">2026年3月15日</span>
-            <span class="card-source">Danmee</span>
+            <span class="card-source">Soompi</span>
           </div>
         </a>
         <a href="articles/article-012.html" class="style-card">
           <div class="card-image">
-            <img src="images/article-11-99412.jpg" alt="4年前の作品が異例ランクイン！26年3月最新韓国ドラマ ブランド評判トップ5" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/4%E5%B9%B4%E5%89%8D%E3%81%AE%E4%BD%9C%E5%93%81%E3%81%8C%E7%95%B0%E4%BE%8B%E3%83%A9%E3%83%B3%E3%82%AF%E3%82%A4%E3%83%B3%EF%BC%8126%E5%B9%B43%E6%9C%88/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-11-60547.jpg" alt="今月のクイーンはIVE ウォニョン！26年3月K-POP女性個人 ブランド評判トップ5" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E4%BB%8A%E6%9C%88%E3%81%AE%E3%82%AF%E3%82%A4%E3%83%BC%E3%83%B3%E3%81%AFIVE%20%E3%82%A6%E3%82%A9%E3%83%8B%E3%83%A7%E3%83%B3%EF%BC%8126/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-body">
             <span class="card-category">EXCLUSIVE</span>
-            <h3 class="card-title">4年前の作品が異例ランクイン！26年3月最新韓国ドラマ ブランド評判トップ5</h3>
+            <h3 class="card-title">今月のクイーンはIVE ウォニョン！26年3月K-POP女性個人 ブランド評判トップ5</h3>
             <span class="card-date">2026年3月14日</span>
             <span class="card-source">Danmee</span>
           </div>
         </a>
         <a href="articles/article-013.html" class="style-card">
           <div class="card-image">
-            <img src="images/article-12-99413.jpg" alt="演技という名の変容 — Boy Child Actor Pretendedのドラマ出演" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E6%BC%94%E6%8A%80%E3%81%A8%E3%81%84%E3%81%86%E5%90%8D%E3%81%AE%E5%A4%89%E5%AE%B9%20%E2%80%94%20Boy%20Chil/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-12-60547.jpg" alt="【推し度調査】TXT テヒョン、2月バースデーK-POP男性アイドル1位に！世界中のMOAから祝福" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E3%80%90%E6%8E%A8%E3%81%97%E5%BA%A6%E8%AA%BF%E6%9F%BB%E3%80%91TXT%20%E3%83%86%E3%83%92%E3%83%A7%E3%83%B3%E3%80%812%E6%9C%88%E3%83%90%E3%83%BC/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-body">
-            <span class="card-category">CULTURE</span>
-            <h3 class="card-title">演技という名の変容 — Boy Child Actor Pretendedのドラマ出演</h3>
+            <span class="card-category">EXCLUSIVE</span>
+            <h3 class="card-title">【推し度調査】TXT テヒョン、2月バースデーK-POP男性アイドル1位に！世界中のMOAから祝福</h3>
             <span class="card-date">2026年3月14日</span>
-            <span class="card-source">Koreaboo</span>
+            <span class="card-source">Danmee</span>
           </div>
         </a>
         <a href="articles/article-014.html" class="style-card">
           <div class="card-image">
-            <img src="images/article-13-99413.jpg" alt="米TIME誌も絶賛！BLACKPINK ジスが1位に･･3月第3週 韓ドラ出演者話題性トップ5" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E7%B1%B3TIME%E8%AA%8C%E3%82%82%E7%B5%B6%E8%B3%9B%EF%BC%81BLACKPINK%20/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            <img src="images/article-13-60547.jpg" alt="静謐な衝撃 — K-POPシーンに走る波紋（深層分析）" width="560" height="700" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/%E9%9D%99%E8%AC%90%E3%81%AA%E8%A1%9D%E6%92%83%20%E2%80%94%20K-POP%E3%82%B7%E3%83%BC%E3%83%B3%E3%81%AB%E8%B5%B0%E3%82%8B%E6%B3%A2/560/700" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
           </div>
           <div class="card-body">
             <span class="card-category">EXCLUSIVE</span>
-            <h3 class="card-title">米TIME誌も絶賛！BLACKPINK ジスが1位に･･3月第3週 韓ドラ出演者話題性トップ5</h3>
-            <span class="card-date">2026年3月13日</span>
-            <span class="card-source">Danmee</span>
+            <h3 class="card-title">静謐な衝撃 — K-POPシーンに走る波紋（深層分析）</h3>
+            <span class="card-date">2026年3月14日</span>
+            <span class="card-source">Seoulbeats</span>
           </div>
         </a>
       </div>
@@ -499,29 +551,29 @@
         <a href="articles/article-015.html" class="archive-item">
           <span class="archive-num">01</span>
           <div class="archive-content">
-            <span class="archive-title">暗闇の中の輝き — 最新K-POPニュース</span>
-            <span class="archive-meta">2026年3月16日 / Soompi</span>
+            <span class="archive-title">静寂を破るBTS — カムバックの衝撃</span>
+            <span class="archive-meta">2026年3月15日 / Soompi</span>
           </div>
         </a>
         <a href="articles/article-016.html" class="archive-item">
           <span class="archive-num">02</span>
           <div class="archive-content">
-            <span class="archive-title">闇夜に現れた新星 — Yoo Yeon Seokデビュー考察</span>
-            <span class="archive-meta">2026年3月16日 / Soompi</span>
+            <span class="archive-title">Jun Ji Hyun、スクリーンに宿る新たな存在感</span>
+            <span class="archive-meta">2026年3月14日 / Soompi</span>
           </div>
         </a>
         <a href="articles/article-017.html" class="archive-item">
           <span class="archive-num">03</span>
           <div class="archive-content">
-            <span class="archive-title">日本で観られる作品も！26年4月放送・公開予定の最新韓国ドラマ8選</span>
-            <span class="archive-meta">2026年3月13日 / Danmee</span>
+            <span class="archive-title">BTS、沈黙の先に待つ新章</span>
+            <span class="archive-meta">2026年3月13日 / AsianJunkie</span>
           </div>
         </a>
         <a href="articles/article-018.html" class="archive-item">
           <span class="archive-num">04</span>
           <div class="archive-content">
-            <span class="archive-title">スタートの季節に響く恋模様！4月に日本のテレビで始まる「大人のロマンス」韓ドラ5選</span>
-            <span class="archive-meta">2026年3月13日 / Danmee</span>
+            <span class="archive-title">Heeseung、沈黙の先に待つ新章</span>
+            <span class="archive-meta">2026年3月13日 / AsianJunkie</span>
           </div>
         </a>
       </div>
@@ -535,6 +587,22 @@
       <div class="footer-copy">&copy; 2018&ndash;2026 ONYX. All rights reserved. Editorial content aggregated from public RSS feeds.</div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('menuBtn');
+      var nav = document.getElementById('mobileNav');
+      if (btn && nav) {
+        btn.addEventListener('click', function() {
+          if (nav.style.display === 'block') {
+            nav.style.display = 'none';
+          } else {
+            nav.style.display = 'block';
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

@@ -280,9 +280,48 @@
       color: #666;
     }
 
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #c9a96e;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .mobile-nav-hidden {
+      display: none;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+    }
+    .mobile-nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-nav-inner a {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+    }
+    .mobile-nav-inner a:hover { color: #c9a96e; }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
       .site-nav { display: none; }
+      .mobile-menu-btn { display: flex; }
       .hero-title { font-size: 22px; }
       .exclusive-grid { grid-template-columns: 1fr; }
       .latest-item { grid-template-columns: 100px 1fr; gap: 12px; }
@@ -302,8 +341,21 @@
         <a href="#style">STYLE</a>
         <a href="#archive">ARCHIVE</a>
       </nav>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" class="mobile-nav-hidden">
+    <div class="mobile-nav-inner">
+      <a href="#exclusive">EXCLUSIVE</a>
+      <a href="#latest">LATEST</a>
+      <a href="#style">STYLE</a>
+      <a href="#archive">ARCHIVE</a>
+    </div>
+  </div>
 
   <!-- ===== HERO ===== -->
   <section class="hero-section">
@@ -368,6 +420,22 @@
       <div class="footer-copy">&copy; 2018&ndash;2026 ONYX. All rights reserved. Editorial content aggregated from public RSS feeds.</div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('menuBtn');
+      var nav = document.getElementById('mobileNav');
+      if (btn && nav) {
+        btn.addEventListener('click', function() {
+          if (nav.style.display === 'block') {
+            nav.style.display = 'none';
+          } else {
+            nav.style.display = 'block';
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
