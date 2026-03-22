@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONYX | K-POP Boy Group Magazine</title>
+  <meta name="description" content="ONYX - Japanese K-POP boy group music magazine. News, features, reviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #ddd;
+      background: #1a1a1a;
+    }
+
+    a { color: #ddd; text-decoration: none; }
+    a:hover { color: #c9a96e; text-decoration: underline; }
+    img { display: block; width: 100%; height: auto; }
+    ul, ol { list-style: none; }
+    ::selection { background: #c9a96e; color: #1a1a1a; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: #1a1a1a;
+      border-bottom: 2px solid #c9a96e;
+      padding: 16px 0;
+    }
+    .site-header .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .site-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.15em;
+      color: #ddd;
+    }
+    .site-logo:hover { color: #c9a96e; text-decoration: none; }
+    .site-nav { display: flex; gap: 24px; }
+    .site-nav a {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+    }
+    .site-nav a:hover { color: #c9a96e; }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      border-bottom: 1px solid #333;
+      padding: 32px 0;
+    }
+    .hero-inner { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .hero-img { margin-bottom: 16px; }
+    .hero-img img { width: 100%; height: auto; }
+    .hero-category {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #c9a96e;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #ddd;
+      margin-bottom: 8px;
+    }
+    .hero-meta {
+      font-size: 12px;
+      color: #888;
+    }
+    .hero-meta .sep { margin: 0 8px; color: #555; }
+
+    /* ===== SECTIONS ===== */
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #ddd;
+      padding: 40px 0 16px;
+      border-bottom: 1px solid #c9a96e;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== EXCLUSIVE GRID ===== */
+    .exclusive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #333;
+      border: 1px solid #333;
+      margin-bottom: 24px;
+    }
+    .exclusive-card {
+      display: block;
+      background: #1a1a1a;
+      padding: 16px;
+      text-decoration: none;
+    }
+    .exclusive-card:hover { background: #222; text-decoration: none; }
+    .exclusive-card .card-image { margin-bottom: 12px; }
+    .exclusive-card .card-image img { width: 100%; height: auto; }
+    .exclusive-card .card-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #c9a96e;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .exclusive-card .card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #ddd;
+      margin-bottom: 6px;
+    }
+    .exclusive-card:hover .card-title { color: #c9a96e; }
+    .exclusive-card .card-date {
+      font-size: 11px;
+      color: #888;
+    }
+    .exclusive-card .card-source {
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* ===== LATEST LIST ===== */
+    .latest-list { margin-bottom: 24px; }
+    .latest-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #333;
+      align-items: start;
+      text-decoration: none;
+    }
+    .latest-item:first-child { border-top: 1px solid #333; }
+    .latest-item:hover { text-decoration: none; }
+    .latest-item .item-image img { width: 100%; height: auto; }
+    .latest-item .item-content { display: flex; flex-direction: column; gap: 4px; }
+    .latest-item .item-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #c9a96e;
+    }
+    .latest-item .item-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.4;
+      color: #ddd;
+    }
+    .latest-item:hover .item-title { color: #c9a96e; }
+    .latest-item .item-date {
+      font-size: 11px;
+      color: #888;
+    }
+    .latest-item .item-source {
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* ===== STYLE GRID ===== */
+    .style-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .style-card {
+      display: block;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      text-decoration: none;
+    }
+    .style-card:hover { border-color: #c9a96e; text-decoration: none; }
+    .style-card .card-image img { width: 100%; height: auto; }
+    .style-card .card-body { padding: 16px; }
+    .style-card .card-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #c9a96e;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .style-card .card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #ddd;
+      margin-bottom: 6px;
+    }
+    .style-card:hover .card-title { color: #c9a96e; }
+    .style-card .card-date {
+      font-size: 11px;
+      color: #888;
+    }
+    .style-card .card-source {
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* ===== ARCHIVE LIST ===== */
+    .archive-list { margin-bottom: 24px; }
+    .archive-item {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #333;
+      text-decoration: none;
+    }
+    .archive-item:first-child { border-top: 1px solid #333; }
+    .archive-item:hover { text-decoration: none; }
+    .archive-item .archive-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #c9a96e;
+      min-width: 40px;
+      line-height: 1;
+    }
+    .archive-item .archive-content { flex: 1; }
+    .archive-item .archive-title {
+      font-size: 14px;
+      color: #ddd;
+      line-height: 1.5;
+    }
+    .archive-item:hover .archive-title { color: #c9a96e; }
+    .archive-item .archive-meta {
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      margin-top: 60px;
+      border-top: 1px solid #333;
+      padding: 32px 0;
+      background: #1a1a1a;
+    }
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: 0.15em;
+      color: #c9a96e;
+      margin-bottom: 8px;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: #666;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .site-nav { display: none; }
+      .hero-title { font-size: 22px; }
+      .exclusive-grid { grid-template-columns: 1fr; }
+      .latest-item { grid-template-columns: 100px 1fr; gap: 12px; }
+      .style-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-logo">ONYX</a>
+      <nav class="site-nav">
+        <a href="#exclusive">EXCLUSIVE</a>
+        <a href="#latest">LATEST</a>
+        <a href="#style">STYLE</a>
+        <a href="#archive">ARCHIVE</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-img">
+        {{HERO_IMAGE}}
+      </div>
+      <span class="hero-category">{{HERO_CATEGORY}}</span>
+      <h1 class="hero-title">{{HERO_TITLE}}</h1>
+      <div class="hero-meta">
+        <span>{{HERO_DATE}}</span>
+        <span class="sep">|</span>
+        <span>{{HERO_SOURCE}}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXCLUSIVE ===== -->
+  <section id="exclusive">
+    <div class="wrap">
+      <h2 class="section-title">Exclusive</h2>
+      <div class="exclusive-grid">
+        {{EXCLUSIVE_ITEMS}}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LATEST ===== -->
+  <section id="latest">
+    <div class="wrap">
+      <h2 class="section-title">Latest</h2>
+      <div class="latest-list">
+        {{LATEST_ARTICLES}}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STYLE & STAGE ===== -->
+  <section id="style">
+    <div class="wrap">
+      <h2 class="section-title">Style & Stage</h2>
+      <div class="style-grid">
+        {{STYLE_ITEMS}}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ARCHIVE ===== -->
+  <section id="archive">
+    <div class="wrap">
+      <h2 class="section-title">Archive</h2>
+      <div class="archive-list">
+        {{ARCHIVE_ITEMS}}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">ONYX</div>
+      <div class="footer-copy">&copy; 2018&ndash;2026 ONYX. All rights reserved. Editorial content aggregated from public RSS feeds.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
