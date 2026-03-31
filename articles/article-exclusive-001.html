@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>練習生の光と影：AI出席管理が変える男性アイドルの過酷な日常 | ONYX</title>
+  <meta name="description" content="AIが記録する遅刻の1分、消費されるセッション、発行される警告。男性練習生の過酷な日常を出席データの裏側から読み解く。">
+  <meta property="og:title" content="練習生の光と影：AI出席管理が変える男性アイドルの過酷な日常 | ONYX">
+  <meta property="og:image" content="https://picsum.photos/seed/onyx-trainee-dark/760/428">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Zen Kaku Gothic New', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 2.0;
+      color: #ccc;
+      background: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #C9A96E; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #e8e8e8; }
+    img { display: block; width: 100%; height: auto; object-fit: cover; }
+    ul, ol { list-style: none; }
+
+    ::selection { background: #C9A96E; color: #1a1a1a; }
+
+    /* ===== NAVIGATION ===== */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26,26,26,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      color: #e8e8e8;
+    }
+
+    .nav-logo span { color: #C9A96E; }
+    .nav-logo a { color: inherit; }
+    .nav-logo a:hover { color: inherit; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: #C9A96E; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin: 20px 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover { color: #C9A96E; }
+
+    /* ===== ARTICLE CONTAINER ===== */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== ARTICLE HEADER ===== */
+    .article-header {
+      margin-top: 80px;
+      margin-bottom: 40px;
+    }
+
+    .article-category-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: #C9A96E;
+      border: 1px solid #C9A96E;
+      padding: 4px 16px;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.3;
+      color: #e8e8e8;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: #888;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+
+    .article-meta .gold-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #C9A96E;
+    }
+
+    /* ===== ARTICLE HERO IMAGE ===== */
+    .article-hero-image {
+      margin-bottom: 40px;
+      border: 1px solid #333;
+      overflow: hidden;
+    }
+
+    .article-hero-image img {
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    .photo-credit {
+      font-size: 11px;
+      color: #666;
+      margin-top: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      margin-top: 40px;
+      font-size: 16px;
+      line-height: 2.0;
+      color: #ccc;
+    }
+
+    .article-body p {
+      margin-bottom: 28px;
+    }
+
+    .editorial-intro {
+      border-left: 3px solid #C9A96E;
+      padding-left: 24px;
+      font-size: 17px;
+      line-height: 1.9;
+      color: #e8e8e8;
+      margin-bottom: 36px;
+      font-weight: 500;
+    }
+
+    .editorial-closing {
+      border-top: 1px solid #333;
+      padding-top: 24px;
+      margin-top: 40px;
+      font-style: italic;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .article-inline-image {
+      margin: 36px 0;
+      border: 1px solid #333;
+      overflow: hidden;
+    }
+
+    .article-inline-image img {
+      filter: brightness(0.85);
+    }
+
+    blockquote {
+      border-left: 3px solid #C9A96E;
+      padding-left: 20px;
+      margin: 32px 0;
+      font-style: italic;
+      color: #999;
+    }
+
+    /* ===== SOURCE ATTRIBUTION ===== */
+    .source-attribution {
+      margin-top: 48px;
+      padding: 24px;
+      background: #242424;
+      border: 1px solid #333;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .source-attribution a { color: #C9A96E; }
+    .source-attribution a:hover { color: #e8e8e8; }
+
+    .read-original {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== RELATED ARTICLES ===== */
+    .related-section {
+      margin-top: 80px;
+      padding-top: 48px;
+      border-top: 1px solid #C9A96E;
+    }
+
+    .related-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 28px;
+      color: #e8e8e8;
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .related-card {
+      background: #242424;
+      border: 1px solid #333;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      display: block;
+    }
+
+    .related-card:hover {
+      border-color: #C9A96E;
+      transform: translateY(-4px);
+    }
+
+    .related-card .thumb {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+
+    .related-card .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: transform 0.5s ease;
+    }
+
+    .related-card:hover .thumb img { transform: scale(1.05); }
+
+    .related-card .related-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #C9A96E;
+      padding: 16px 16px 0;
+    }
+
+    .related-card h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #e8e8e8;
+      padding: 8px 16px 0;
+    }
+
+    .related-card .date {
+      font-size: 11px;
+      color: #888;
+      padding: 8px 16px 16px;
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      margin-top: 80px;
+      border-top: 1px solid #C9A96E;
+      padding: 48px 0 32px;
+      background: #141414;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      color: #C9A96E;
+    }
+
+    .footer-copyright {
+      font-size: 10px;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .nav-links { display: none; }
+
+      .article-title { font-size: 28px; }
+
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <div class="nav-logo"><a href="../index.html">ONY<span>X</span></a></div>
+      <div class="nav-links">
+        <a href="../index.html#exclusive">EXCLUSIVE</a>
+        <a href="../index.html#latest">LATEST</a>
+        <a href="../index.html#style">STYLE</a>
+        <a href="../index.html#archive">ARCHIVE</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== ARTICLE ===== -->
+  <main>
+    <div class="article-container">
+      <a href="../index.html" class="back-link">
+        <iconify-icon icon="solar:arrow-left-linear" width="16"></iconify-icon>
+        ONYX TOPへ戻る
+      </a>
+
+      <article>
+        <header class="article-header">
+          <span class="article-category-badge">特集</span>
+          <h1 class="article-title">練習生の光と影：AI出席管理が変える男性アイドルの過酷な日常</h1>
+          <div class="article-meta">
+            <span>2026-04-01</span>
+            <span class="gold-dot"></span>
+            <span>ONYX Editorial</span>
+          </div>
+        </header>
+
+        <div class="article-hero-image">
+          <img src="https://picsum.photos/seed/onyx-trainee-dark/760/428" alt="練習生AI管理" width="760" height="428" loading="eager" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="photo-credit">Photo &mdash; ONYX Editorial</div>
+
+        <div class="article-body">
+          <div class="editorial-intro">
+            午前5時47分。ソウル江南区の地下練習室に、まだ日も昇らぬうちから足音が響く。その足音の到着時刻を、1分の狂いもなく記録するシステムが、今、男性練習生たちの運命を静かに書き換えている。
+          </div>
+
+          <p>
+            K-POPアカデミーが導入したAI出席管理システムの核心には、<strong>lessons</strong>テーブルがある。各レッスンには日付、開始時刻、終了時刻が厳密に定義され、担当インストラクターのIDが紐づけられる。そして何より残酷なのが、<strong>group_type</strong>フィールドだ。AかB——たった一文字のアルファベットが、練習生の立ち位置を二分する。Aグループはデビュー候補、Bグループは育成枠。この振り分けは固定ではない。出席データが、その境界線を常に揺さぶり続ける。
+          </p>
+
+          <p>
+            出席テーブル（<strong>attendance</strong>）に刻まれるステータスは4種類。<em>present</em>（出席）、<em>absent</em>（欠席）、<em>late</em>（遅刻）、<em>excused</em>（公欠）。文字にすればシンプルだが、その一つひとつが練習生のキャリアに直結する。特に<strong>late_minutes</strong>フィールドは容赦がない。レッスン開始時刻から何分遅れたか——整数値で、丸めなし、例外なし。3分の遅刻は「3」として永遠にデータベースに刻まれる。ある練習生はこう語った。「1分の遅刻も、100回積み重なれば100分になる。その100分が、僕のAグループ残留を決める。」
+          </p>
+
+          <blockquote>
+            「データは嘘をつかない。でもデータは、僕たちが泣いた夜のことは記録してくれない。」——匿名の男性練習生（19歳）
+          </blockquote>
+
+          <p>
+            このシステムで最も冷徹な判定を下すのが、<strong>is_session_consumed</strong>フラグだ。TRUEが記録された瞬間、その練習生の月間セッション枠から1回分が差し引かれる。セッション枠は<strong>students</strong>テーブルの<strong>monthly_sessions</strong>フィールドで定義され、契約プランによって上限が異なる。startプランなら月4回、basicで8回、standardで12回、そしてpremiumなら20回以上。練習生にとって、消費されたセッションは二度と戻らない。体調不良で休んだ日も、電車の遅延で間に合わなかった朝も、システムは等しく「消費済み」と記録する。
+          </p>
+
+          <p>
+            プラン階層（<strong>plan_tier</strong>）の存在は、練習室に見えない格差を生み出している。premium枠を持つ練習生は月20回以上のレッスンを受けられるが、start枠の練習生は月にわずか4回。同じ練習室で、同じ振り付けを学び、同じ鏡に映る自分を見つめながら、与えられた機会の数は5倍も違う。ある男性グループの元練習生は振り返る。「premiumの子たちは毎日踊れる。僕は週に1回。差が開かないわけがない。」この構造的不均衡を、AIは感情なく、正確に、データとして蓄積し続ける。
+          </p>
+
+          <p>
+            そして、<strong>warning_issued</strong>——警告フラグ。30日間のローリングウィンドウ内で遅刻が3回に達した時、あるいは公欠なしの連続欠席が2回記録された時、このブーリアン値がTRUEに切り替わる。警告の蓄積はグループ再編の判断材料となり、Aグループからの降格、最悪の場合は契約終了の根拠にもなりうる。データベースに刻まれた警告は削除されない。練習生が努力で取り返せるのは未来のデータだけであり、過去の記録は変更不可能なイミュータブルログとして残り続ける。
+          </p>
+
+          <p>
+            AグループとBグループの競争構造は、同じインストラクターが同日に両グループを指導するケースが多いことで、一層鮮明になる。カリキュラムは同一、評価基準も同一。異なるのは、そこに集う練習生たちの出席率と遅刻率だ。データが示すところによると、Aグループの練習生は消費済みセッションのリカバリー（振替レッスンへの参加）をBグループの2.4倍の頻度で行っている。彼らはセッションという有限資源の価値を本能的に理解し、1回たりとも無駄にしない。この差は才能の差ではない。データが可視化する、覚悟の差だ。
+          </p>
+
+          <p>
+            光の当たるステージの裏側で、AIは沈黙のまま分単位の記録を積み重ねている。華やかなパフォーマンスの影に、<strong>late_minutes</strong>の累積があり、<strong>warning_issued</strong>の重圧があり、消費されたセッションの残数を数える夜がある。男性アイドルの笑顔の裏にある規律——それは今、人間の記憶ではなく、リレーショナルデータベースのカラムに刻まれている。練習生たちはこのシステムを「もう一人の先生」と呼ぶ。ただしこの先生は、決して褒めない。決して忘れない。そして決して、例外を認めない。
+          </p>
+
+          <div class="editorial-closing">
+            光と影は常に対をなす。ステージ上の輝きが増すほど、その裏で記録されるデータの精度もまた、研ぎ澄まされていく。AI出席管理は、練習生の努力を数値に還元する。だがその数値の向こうに、まだ名前のない少年たちの夢があることを、我々は忘れてはならない。
+          </div>
+        </div>
+
+      </article>
+
+      <!-- ===== RELATED ===== -->
+      <section class="related-section">
+        <h2 class="related-heading">Related</h2>
+        <div class="related-grid">
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">ONYX</div>
+      <div class="footer-copyright">&copy; 2026 ONYX Magazine. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
